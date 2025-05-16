@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { FaCaretRight, FaFacebookF, FaLinkedinIn } from 'react-icons/fa'
+import {  FaCaretRight } from 'react-icons/fa'
 import { motion } from 'motion/react'
 import { useAppContext } from '../context/AppContext'
 import { CgMenuRightAlt } from 'react-icons/cg'
-import { BsGithub } from 'react-icons/bs'
 import Links from './Links'
 
 const NavBar = () => {
-    const NavIconClassName = '__icon_navigation flex justify-center items-center w-[40px] h-[40px] rounded-full border-1 border-gray-400 relative hover:text-[#121212]'
     const [isScrolled, setIsScrolled] = useState(false);
-
-
-    const { activeOnglet, setActiveOnglet } = useAppContext();
-
-
     useEffect(() => {
         const handleScrolle = () => {
             const y = window.scrollY;
@@ -40,7 +33,7 @@ const NavBar = () => {
     useEffect(() => {
         const handleResize = () => {
             const size = window.innerWidth;
-            if (size > 600) {
+            if (size > 1044) {
                 setIsMobile(false)
             } else {
                 setIsMobile(true);
@@ -59,18 +52,25 @@ const NavBar = () => {
 
 
     return (
-        <div className={`fixed z-50 to-0% w-full py-3  text-white `}>
-            <div className='__container flex items-center font-normal'>
-                <a href={'#home'}>
-                    <h2 className='text-3xl'><span className={`text-green-400 underline  ${isScrolled ? 'decoration-white' : 'decoration-[#121212]'} dark:decoration-white `}>Port</span><span className={`underline  decoration-green-400 ${isScrolled ? '' : 'text-[#121212]'} dark:text-white `}>folio</span> </h2>
-                </a>
-                {!isMobile ?
-                    <NavDescTop isScrolled={isScrolled} />
-                    :
-                    <NavMobile isScrolled={isScrolled} />
-                }
+        <>
+            <div className={`fixed left-0 z-40 right-0  py-3  backdrop-blur-md bg-backgroud-transparent`}>
+                <div className='__container flex items-center font-normal font-heading'>
+                    <a href={'#accueil'}>
+                        <h1 className='text-3xl'><span className={`text-theme underline dark:decoration-primary `}>Port</span><span className={`underline  decoration-theme ${isScrolled ? '' : 'text-[#121212]'} dark:text-primary `}>folio</span> </h1>
+                    </a>
+                    {!isMobile ?
+                        <NavDescTop isScrolled={isScrolled} />
+                        :
+                        <NavMobile isScrolled={isScrolled} />
+                    }
+                </div>
             </div>
-        </div>
+            
+        </>
+
+
+
+
     )
 }
 
@@ -78,7 +78,7 @@ const NavBar = () => {
 const NavDescTop = ({ isScrolled }) => {
     return (
         <nav className='ms-auto flex'>
-            <NavBarLink />
+            <NavBarLink className='flex items-center gap-4 text-secondary' />
             <div className='ml-10 flex items-center gap-4'>
                 <Links />
             </div>
@@ -87,36 +87,35 @@ const NavDescTop = ({ isScrolled }) => {
 }
 const NavMobile = ({ isScrolled }) => {
 
-
-
-
     const [showMenu, setShowMenu] = useState(false);
     const toggleMenu = () => {
         setShowMenu(v => !v);
     }
 
     const variantMenu = {
-        'hidden': { x: 400 },
+        'hidden': { x: 0 },
         'visible': {
-            x: 0
+            x: -240
         }
     }
     return (
-        <nav className='ms-auto'>
-            <button type='button' onClick={toggleMenu} className='flex items-center cursor-pointer'>
+        <nav className='ms-auto'> 
+            <button type='button' onClick={toggleMenu}  className='flex text-primary items-center cursor-pointer'>
                 <CgMenuRightAlt size={30} />
             </button>
             <motion.div
                 variants={variantMenu}
-                className='bg-[#121212f1] absolute top-0 right-0   h-screen shadow-lg shadow-green-900 p-10'
-                initial={showMenu ? 'hidden' : 'visible'}
+                className='bg-[#121212f1] absolute top-0 -right-60   h-screen shadow-lg shadow-theme/80 p-10'
+                initial={ 'hidden'}
                 animate={showMenu ? 'visible' : 'hidden'}
             >
-                <button className='absolute text-white top-1 left-0.5 cursor-pointer' onClick={toggleMenu}>
+                <button className='absolute text-primary top-1 left-0.5 cursor-pointer' onClick={toggleMenu}>
                     <FaCaretRight size={25} />
                 </button>
-                <NavBarLink />
-                <nav className='mt-10 flex items-center gap-4'>
+                <nav className='text-secondary'>
+                    <NavBarLink className='flex flex-col items-center justify-center gap-3' onClick={() => { setShowMenu(false) }}  />
+                </nav>
+                <nav className='mt-10 flex items-center  gap-4'>
                     <Links />
                 </nav>
             </motion.div>
@@ -126,27 +125,32 @@ const NavMobile = ({ isScrolled }) => {
 }
 
 
-const NavBarLink = () => {
+const NavBarLink = ({ className = '' , onClick=() => {} }) => {
     const { activeOnglet, setActiveOnglet } = useAppContext();
-    
+
     return (
-        <ul className='flex items-center gap-4 text-gray-400'>
-            <li className='' onClick={() => setActiveOnglet('accueil')}>
-                <a
-                    href="#accueil"
-                    className={`relative link-underline py-1 px-2 ${activeOnglet === 'accueil' ? 'text-green-400 link-underline-active' : 'hover:text-gray-50'}`}
-                >
-                    Accueil
-                </a>
-            </li>
-            <li className='' onClick={() => setActiveOnglet('a-propos')}>
-                <a
-                    href="#a-propos"
-                    className={`relative link-underline py-1 px-2 ${activeOnglet === 'a-propos' ? 'text-green-400 link-underline-active' : 'hover:text-gray-50'}`}
-                >
-                    A propos
-                </a>
-            </li>
+        <ul className={className}>
+            {[
+                { id: 'accueil', label: 'Accueil' },
+                { id: 'services', label: 'Services' },
+                { id: 'projets', label: 'Mes projets' },
+                { id: 'competences', label: 'Compétences' },
+                { id: 'a-propos', label: 'À propos' },
+                { id: 'contact', label: 'Contact' },
+            ].map(({ id, label }) => (
+                <li key={id}>
+                    <a
+                        href={`#${id}`}
+                        onClick={() => {setActiveOnglet(id) ; onClick()} }
+                        className={`relative link-underline py-1 px-2 ${activeOnglet === id
+                            ? 'text-theme link-underline-active'
+                            : 'hover:text-primary'
+                            }`}
+                    >
+                        {label}
+                    </a>
+                </li>
+            ))}
         </ul>
 
     )
