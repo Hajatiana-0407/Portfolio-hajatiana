@@ -53,11 +53,7 @@ function App() {
           <Footer />
         </div>
 
-        {activeOnglet !== 'accueil' &&
-          <div className='fixed z-20 bottom-20 right-15 w-[max-content]'>
-            <Button href='#accueil' icon={<FaArrowUp />} />
-          </div>
-        }
+        
       </div>
     </>
   )

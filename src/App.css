@@ -48,7 +48,7 @@
   /*  */
   --color-background: #111927 ;
   --color-primary : var(--color-zinc-50)   ; 
-  --color-secondary :  var(--color-zinc-200 ) ; 
+  --color-secondary :  var(--color-zinc-300 ) ; 
   --color-theme : var(--color-cyan-500 ) ; 
   /*  */
   --font-size-sm: 0.750rem;

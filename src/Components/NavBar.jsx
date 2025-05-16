@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from 'react'
-import { FaCaretRight } from 'react-icons/fa'
+import { FaArrowUp, FaCaretRight } from 'react-icons/fa'
 import { motion } from 'motion/react'
 import { useAppContext } from '../context/AppContext'
 import { CgMenuRightAlt } from 'react-icons/cg'
 import Links from './Links'
+import Button from './Button'
 
 const NavBar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const { activeOnglet, setActiveOnglet } = useAppContext();
     useEffect(() => {
         const handleScrolle = () => {
             const y = window.scrollY;
-
+            
             if (y > 40) {
                 setIsScrolled(true);
             } else {
                 setIsScrolled(false)
             }
+
+            
         };
         window.addEventListener('scroll', handleScrolle);
         handleScrolle();
@@ -54,7 +58,7 @@ const NavBar = () => {
     return (
         <>
             <div className={`fixed left-0 z-40 right-0 `}>
-                <div className='__container '>
+                <div className='__container'>
                     <div className='flex  py-3 items-center backdrop-blur-md bg-backgroud-transparent font-normal font-heading'>
                         <a href={'#accueil'}>
                             <h1 className='text-3xl'><span className={`text-theme underline dark:decoration-primary `}>Port</span><span className={`underline  decoration-theme ${isScrolled ? '' : 'text-[#121212]'} dark:text-primary `}>folio</span> </h1>
@@ -67,6 +71,11 @@ const NavBar = () => {
                     </div>
                 </div>
             </div>
+            {activeOnglet !== 'accueil' &&
+                <div className='fixed z-20 bottom-20 right-4 xl:right-[calc((100%-1200px)/2+16px)]  w-[max-content]'>
+                    <Button href='#accueil' icon={<FaArrowUp />} />
+                </div>
+            }
 
         </>
 
