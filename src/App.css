@@ -1,19 +1,28 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: 'Noto Sans Display';
-  src: url('./assets/fonts/NotoSansDisplay-Regular.ttf') format('truetype');
+  font-family: 'inter';
+  src: url('./assets/fonts/Inter_24pt-Regular.ttf') format('truetype');
   font-weight: 400;
   font-display: swap;
 }
-
 @font-face {
-  font-family: 'Noto Sans Display';
-  src: url('./assets/fonts/NotoSansDisplay-Bold.ttf') format('truetype');
+  font-family: 'inter';
+  src: url('./assets/fonts/Inter_24pt-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'inter';
+  src: url('./assets/fonts/Inter_28pt-Bold.ttf') format('truetype');
   font-weight: 700;
   font-display: swap;
 }
 
+
+* {
+  scroll-behavior: smooth ;
+}
 
 #root {
   width: 100%;
@@ -21,37 +30,40 @@
   overflow: auto;
 }
 
+
+
 *::-webkit-scrollbar {
   width: 8px;
   height: 10px;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--color-gray-400);
   border-radius: 10px;
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-gray-600) var(--color-gray-400);
 }
-
-
-
 @theme {
-  --color-background: #121212;
+  /*  */
+  --color-background: #111927 ;
+  --color-primary : var(--color-zinc-50)   ; 
+  --color-secondary :  var(--color-zinc-200 ) ; 
+  --color-theme : var(--color-cyan-500 ) ; 
+  /*  */
   --font-size-sm: 0.750rem;
-  --font-size-base: 1rem;
+  --font-size-base: 0.9rem;
   --font-size-xl: 1.333rem;
   --font-size-2xl: 1.777rem;
   --font-size-3xl: 2.369rem;
   --font-size-4xl: 3.158rem;
   --font-size-5xl: 4.210rem;
 
-  --font-family-heading: 'Noto Sans Display', sans-serif;
-  --font-family-body: 'Noto Sans Display', sans-serif;
+  --font-family-heading: 'inter';
+  --font-family-body: 'inter';
 
   --font-weight-normal: 400;
+  --font-weight-medium: 600;
   --font-weight-bold: 700;
   --border-animation: border-expand 0.3s ease-out forwards;
 }
@@ -110,6 +122,9 @@
     font-family: var(--font-family-body);
   }
 
+  .font-medium {
+    font-weight: var(--font-weight-medium);
+  }
   .font-normal {
     font-weight: var(--font-weight-normal);
   }
@@ -117,6 +132,15 @@
   .font-bold {
     font-weight: var(--font-weight-bold);
   }
+  
+
+  .accueil-bg{
+    background-image: url('./assets/images/accueil-bg.png');
+    background-repeat: no-repeat ;
+    background-position: center ;
+    background-size: cover ;
+  }
+  
 
 
   .border-expand::before {
@@ -129,16 +153,36 @@
   }
 }
 
+
 @layer components {
   .__container {
-    @apply max-w-[1200px] mx-auto
+    @apply max-w-[1200px] mx-auto px-4
   }
 
   .link-underline::after{
     content:' ';
-    @apply absolute left-0 bottom-0 w-0 h-[2px] bg-green-400 transition-all duration-500  ; 
+    @apply absolute left-0 bottom-0 w-0 h-[2px] bg-theme transition-all duration-500; 
   }
   .link-underline-active::after{
     @apply w-full; 
+  }
+
+
+  .card{
+    @apply min-h-40 bg-secondary/5 rounded-lg text-white border-1 border-secondary/10 overflow-hidden
+  }
+
+  .bg-profil{
+    background-image: url('./assets/images/profile.jpg');
+    background-position: center ;
+    background-size: cover ;
+    background-repeat: no-repeat ;
+  }
+
+  .bg-about{
+    background-image: url('./assets/images/About.png');
+    background-position: center ;
+    background-size: cover ;
+    background-repeat: no-repeat ;
   }
 }
