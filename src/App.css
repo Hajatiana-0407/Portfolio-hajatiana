@@ -32,18 +32,6 @@
 
 
 
-*::-webkit-scrollbar {
-  width: 8px;
-  height: 10px;
-}
-
-*::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-}
-
-* {
-  scrollbar-width: thin;
-}
 @theme {
   /*  */
   --color-background: #111927 ;
@@ -66,6 +54,23 @@
   --font-weight-medium: 600;
   --font-weight-bold: 700;
   --border-animation: border-expand 0.3s ease-out forwards;
+}
+
+
+
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: white var(--color-background) ;
 }
 
 
