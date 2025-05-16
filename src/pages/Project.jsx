@@ -1,15 +1,10 @@
 import React from 'react'
 import Title from '../Components/Title'
-import { FaBootstrap,  FaSymfony } from 'react-icons/fa'
+import { FaBootstrap, FaSymfony } from 'react-icons/fa'
 import { SiCodeigniter, SiJquery } from 'react-icons/si'
 import { DiMysql } from 'react-icons/di'
 
-import softio from '../assets/images/projets/softio_img.png'
-import hauteZaune from '../assets/images/projets/hautezone.png'
-import getstionEcole from '../assets/images/projets/gestionEcole.png'
-
 const Project = () => {
-
 
     const projets = [
         {
@@ -21,7 +16,7 @@ const Project = () => {
                 <><SiCodeigniter />Codeigniter</>,
                 <><DiMysql />MySql</>,
             ],
-            image: softio
+            image: "src/assets/images/projets/softio_img.png"
         },
         {
             title: 'Haute-zone Madagascar',
@@ -32,7 +27,7 @@ const Project = () => {
                 <><SiCodeigniter />Codeigniter</>,
                 <><DiMysql />MySql</>,
             ],
-            image: hauteZaune
+            image: "src/assets/images/projets/hautezone.png"
         },
         {
             title: 'Gestion d\'école',
@@ -42,7 +37,7 @@ const Project = () => {
                 <><FaSymfony />Symfony</>,
                 <><DiMysql />MySql</>,
             ],
-            image: getstionEcole
+            image: "src/assets/images/projets/gestionEcole.png"
         },
     ]
 
@@ -56,8 +51,10 @@ const Project = () => {
                     {
                         projets.map((projet, key) => (
                             <div key={projet.title} className='card p-3 group'>
-                                <div className='bg-secondary border-0 rounded-md overflow-hidden w-full h-45'>
-                                    <img className='w-full h-45  transition-all duration-500 group-hover:scale-105 ' src={projet.image} alt="image" />
+                                <div className='relative bg-secondary border-0 rounded-md overflow-hidden w-full h-45'>
+                                    <div className='relative bg-secondary border-0 rounded-md overflow-hidden w-full h-45'>
+                                        <div className={`bg-[url("${projet.image}")] group-hover:scale-105 transition-all duration-500 bg-center bg-cover bg-no-repeat absolute top-0 left-0 right-0 bottom-0`}></div>
+                                    </div>
                                 </div>
                                 <div className='text-left'>
                                     <div className='text-2xl text-primary font-heading mb-3'>
@@ -71,7 +68,7 @@ const Project = () => {
                                     <div className='flex flex-wrap gap-2 text-sm text-secondary font-body '>
                                         {projet.technos.map((techno, key) => (
                                             <div key={key} className='flex items-center gap-1 p-2 rounded-full border-theme shadow-sm shadow-theme/50 border'>
-                                                { techno }
+                                                {techno}
                                             </div>
                                         ))}
                                     </div>

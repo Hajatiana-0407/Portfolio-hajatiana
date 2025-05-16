@@ -38,7 +38,7 @@ const Skill = () => {
                 {
                     icone: <SiJquery size={25} />,
                     descri: 'JQuery',
-                    isPrefered: true,
+                    isPrefered: false,
                 },
                 {
                     icone: <TbBrandReactNative size={25} />,
@@ -58,7 +58,7 @@ const Skill = () => {
                 {
                     icone: <SiCodeigniter size={25} />,
                     descri: 'Codeigniter',
-                    isPrefered: true ,
+                    isPrefered: false ,
                 },
                 {
                     icone: <FaNodeJs size={25} />,
