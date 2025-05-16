@@ -54,7 +54,7 @@ function App() {
         </div>
 
         {activeOnglet !== 'accueil' &&
-          <div className='fixed z-40 bottom-20 right-15 w-[max-content]'>
+          <div className='fixed z-20 bottom-20 right-15 w-[max-content]'>
             <Button href='#accueil' icon={<FaArrowUp />} />
           </div>
         }

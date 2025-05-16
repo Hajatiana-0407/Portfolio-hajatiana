@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {  FaCaretRight } from 'react-icons/fa'
+import { FaCaretRight } from 'react-icons/fa'
 import { motion } from 'motion/react'
 import { useAppContext } from '../context/AppContext'
 import { CgMenuRightAlt } from 'react-icons/cg'
@@ -53,19 +53,21 @@ const NavBar = () => {
 
     return (
         <>
-            <div className={`fixed left-0 z-40 right-0  py-3  backdrop-blur-md bg-backgroud-transparent`}>
-                <div className='__container flex items-center font-normal font-heading'>
-                    <a href={'#accueil'}>
-                        <h1 className='text-3xl'><span className={`text-theme underline dark:decoration-primary `}>Port</span><span className={`underline  decoration-theme ${isScrolled ? '' : 'text-[#121212]'} dark:text-primary `}>folio</span> </h1>
-                    </a>
-                    {!isMobile ?
-                        <NavDescTop isScrolled={isScrolled} />
-                        :
-                        <NavMobile isScrolled={isScrolled} />
-                    }
+            <div className={`fixed left-0 z-40 right-0 `}>
+                <div className='__container '>
+                    <div className='flex  py-3 items-center backdrop-blur-md bg-backgroud-transparent font-normal font-heading'>
+                        <a href={'#accueil'}>
+                            <h1 className='text-3xl'><span className={`text-theme underline dark:decoration-primary `}>Port</span><span className={`underline  decoration-theme ${isScrolled ? '' : 'text-[#121212]'} dark:text-primary `}>folio</span> </h1>
+                        </a>
+                        {!isMobile ?
+                            <NavDescTop isScrolled={isScrolled} />
+                            :
+                            <NavMobile isScrolled={isScrolled} />
+                        }
+                    </div>
                 </div>
             </div>
-            
+
         </>
 
 
@@ -99,21 +101,21 @@ const NavMobile = ({ isScrolled }) => {
         }
     }
     return (
-        <nav className='ms-auto'> 
-            <button type='button' onClick={toggleMenu}  className='flex text-primary items-center cursor-pointer'>
+        <nav className='ms-auto'>
+            <button type='button' onClick={toggleMenu} className='flex text-primary items-center cursor-pointer'>
                 <CgMenuRightAlt size={30} />
             </button>
             <motion.div
                 variants={variantMenu}
-                className='bg-[#121212f1] absolute top-0 -right-60   h-screen shadow-lg shadow-theme/80 p-10'
-                initial={ 'hidden'}
+                className='bg-[#121212f1] z-50 absolute top-0 -right-65   h-screen shadow-lg shadow-theme/80 p-10'
+                initial={'hidden'}
                 animate={showMenu ? 'visible' : 'hidden'}
             >
                 <button className='absolute text-primary top-1 left-0.5 cursor-pointer' onClick={toggleMenu}>
                     <FaCaretRight size={25} />
                 </button>
                 <nav className='text-secondary'>
-                    <NavBarLink className='flex flex-col items-center justify-center gap-3' onClick={() => { setShowMenu(false) }}  />
+                    <NavBarLink className='flex flex-col items-center justify-center gap-3' onClick={() => { setShowMenu(false) }} />
                 </nav>
                 <nav className='mt-10 flex items-center  gap-4'>
                     <Links />
@@ -125,7 +127,7 @@ const NavMobile = ({ isScrolled }) => {
 }
 
 
-const NavBarLink = ({ className = '' , onClick=() => {} }) => {
+const NavBarLink = ({ className = '', onClick = () => { } }) => {
     const { activeOnglet, setActiveOnglet } = useAppContext();
 
     return (
@@ -141,7 +143,7 @@ const NavBarLink = ({ className = '' , onClick=() => {} }) => {
                 <li key={id}>
                     <a
                         href={`#${id}`}
-                        onClick={() => {setActiveOnglet(id) ; onClick()} }
+                        onClick={() => { setActiveOnglet(id); onClick() }}
                         className={`relative link-underline py-1 px-2 ${activeOnglet === id
                             ? 'text-theme link-underline-active'
                             : 'hover:text-primary'
