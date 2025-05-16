@@ -30,7 +30,7 @@ const Home = () => {
             </div>
             <div className='flex justify-center gap-5'>
               <Button label='Me contacter' href='#contact' icon={<IoIosMailUnread />} iscolored />
-              <Button label='Télecharger mon cv' icon={<IoMdDownload />} iscolored />
+              <Button download href='../assets/images/RASOLONDRAIBE_Hajatiana.pdf' label='Télecharger mon cv' icon={<IoMdDownload />} iscolored />
             </div>
           </div>
         </div>
