@@ -13,7 +13,7 @@ const Contact = () => {
       <div className='-mt-10'>
           <p className='text-center text-lg mb-5'>Contactez-moi sur les réseaux sociaux</p>
           <div className='flex justify-center gap-3 mb-5'>
-            <a href="tel:+261345705565" className={`text-primary w-12 h-12 flex justify-center items-center bg-theme/10  rounded-full border-1 border-secondary relative hover:text-background hover:bg-primary hover:shadow-md hover:shadow-theme transition ease-in hover:border-0`}>
+            <a href="tel:+261345705565" className={`text-primary w-12 h-12 flex justify-center items-center bg-theme/10  rounded-full border-1 border-secondary relative hover:text-background hover:bg-primary active:scale-90 hover:scale-125 hover:shadow-md hover:shadow-theme transition ease-in hover:border-0`}>
               <BiPhone />
             </a>
             <Links size='xl' />

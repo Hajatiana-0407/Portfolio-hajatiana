@@ -8,7 +8,7 @@ import Button from './Button'
 
 const NavBar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
-    const { activeOnglet, setActiveOnglet } = useAppContext();
+    const { activeOnglet } = useAppContext();
     useEffect(() => {
         const handleScrolle = () => {
             const y = window.scrollY;
