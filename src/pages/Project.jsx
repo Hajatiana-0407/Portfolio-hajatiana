@@ -57,7 +57,7 @@ const Project = () => {
                                     </div>
                                 </div>
                                 <div className='text-left'>
-                                    <div className='text-2xl text-primary font-heading mb-3'>
+                                    <div className='text-2xl text-primary font-heading my-3'>
                                         <h3>{projet.title} </h3>
                                     </div>
                                     <div className='text-secondary   text-base mb-3'>

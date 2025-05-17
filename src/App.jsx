@@ -13,7 +13,7 @@ import { FaArrowUp } from 'react-icons/fa'
 import Footer from './Components/Footer'
 
 function App() {
-  const { activeOnglet, setActiveOnglet } = useAppContext();
+  const { activeOnglet, setActiveOnglet , isDark   } = useAppContext();
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -38,10 +38,12 @@ function App() {
   }, [setActiveOnglet]);
 
 
+  
+
 
   return (
     <>
-      <div className='accueil-bg bg-fixed min-h-screen'>
+      <div data-theme={ isDark === true  ? 'dark' : '' } className='accueil-bg bg-fixed min-h-screen'>
         <div className='font-body'>
           <NavBar />
           <Home />
