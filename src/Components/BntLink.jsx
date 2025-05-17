@@ -10,5 +10,4 @@ const BntLink = ({ href = '', icon , size='md' }) => {
         </ a>
     )
 }
-
 export default BntLink

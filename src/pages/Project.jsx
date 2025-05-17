@@ -3,7 +3,6 @@ import Title from '../Components/Title'
 import { FaBootstrap, FaSymfony } from 'react-icons/fa'
 import { SiCodeigniter, SiJquery } from 'react-icons/si'
 import { DiMysql } from 'react-icons/di'
-
 const Project = () => {
 
     const projets = [
@@ -16,7 +15,7 @@ const Project = () => {
                 <><SiCodeigniter />Codeigniter</>,
                 <><DiMysql />MySql</>,
             ],
-            image: "src/assets/images/projets/softio_img.png"
+            image: "assets/images/projets/softio_img.png"
         },
         {
             title: 'Haute-zone Madagascar',
@@ -27,7 +26,7 @@ const Project = () => {
                 <><SiCodeigniter />Codeigniter</>,
                 <><DiMysql />MySql</>,
             ],
-            image: "src/assets/images/projets/hautezone.png"
+            image: "assets/images/projets/hautezone.png"
         },
         {
             title: 'Gestion d\'école',
@@ -37,7 +36,7 @@ const Project = () => {
                 <><FaSymfony />Symfony</>,
                 <><DiMysql />MySql</>,
             ],
-            image: "src/assets/images/projets/gestionEcole.png"
+            image: "assets/images/projets/gestionEcole.png"
         },
     ]
 
@@ -53,7 +52,9 @@ const Project = () => {
                             <div key={projet.title} className='card p-3 group'>
                                 <div className='relative bg-secondary border-0 rounded-md overflow-hidden w-full h-45'>
                                     <div className='relative bg-secondary border-0 rounded-md overflow-hidden w-full h-45'>
-                                        <div className={`bg-[url("${projet.image}")] group-hover:scale-105 transition-all duration-500 bg-center bg-cover bg-no-repeat absolute top-0 left-0 right-0 bottom-0`}></div>
+                                        <div className={` group-hover:scale-105 transition-all duration-500 bg-center bg-cover bg-no-repeat absolute top-0 left-0 right-0 bottom-0`} style={{
+                                            backgroundImage : `url(${ projet.image })`
+                                        }}></div>
                                     </div>
                                 </div>
                                 <div className='text-left'>

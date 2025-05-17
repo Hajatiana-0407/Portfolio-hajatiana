@@ -19,7 +19,7 @@ const Contact = () => {
           </div>
           <p className='text-center text-lg mb-5'>Ou contacte-moi directement par mail</p>
           <div className='flex justify-center'>
-            <Button href='mailto:hajatianarasolondraibe0407@gmail.com' label='Envoyer un message' icon={<MdEmail/>}  iscolored/>
+            <Button href='mailto:hajatianarasolondraibe0407@gmail.com' target='_blank' label='Envoyer un message' icon={<MdEmail/>}  iscolored/>
           </div>
       </div>
     </section>
