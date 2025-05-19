@@ -26,13 +26,6 @@
     scroll-behavior: smooth;
   }
 
-  #root {
-    width: 100%;
-    height: 100vh;
-    overflow: auto;
-  }
-
-
 
   @theme {
     /* LIGHT MODE  */
@@ -81,19 +74,7 @@
 
 
 
-  *::-webkit-scrollbar {
-    width: 8px;
-    height: 10px;
-  }
 
-  *::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-  }
-
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: white var(--color-background);
-  }
 
 
   @keyframes border-expand {
@@ -112,6 +93,16 @@
 
 
   @layer utilities {
+
+    *::-webkit-scrollbar {
+      width: 8px;
+      height: 10px;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+    }
+
     .text-sm {
       font-size: var(--font-size-sm);
       font-family: ''

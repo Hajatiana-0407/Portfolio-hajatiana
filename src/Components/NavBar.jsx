@@ -61,16 +61,14 @@ const NavBar = () => {
     return (
         <>
             <div className={`fixed left-0 top-0 z-40 right-0 shadow`}>
-                <div className={`__container flex `}>
-                    <div className={`w-full flex  py-3 items-center ${isMobile ? 'justify-end gap-5' : 'justify-evenly'} backdrop-blur-lg bg-backgroud-transparent font-heading`}>
-                        {isMobile && <Mode  />}
-                        {!isMobile ?
-                            <NavDescTop />
-                            :
-                            <NavMobile />
-                        }
-                        {!isMobile && <Mode />}
-                    </div>
+                <div className={`__container w-full flex  py-3 items-center ${isMobile ? 'justify-end gap-5' : 'justify-evenly'} backdrop-blur-lg bg-backgroud-transparent font-heading`}>
+                    {isMobile && <Mode />}
+                    {!isMobile ?
+                        <NavDescTop />
+                        :
+                        <NavMobile />
+                    }
+                    {!isMobile && <Mode />}
                 </div>
             </div>
             {activeOnglet !== 'accueil' &&
