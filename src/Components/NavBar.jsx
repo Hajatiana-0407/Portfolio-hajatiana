@@ -8,11 +8,13 @@ import Button from './Button'
 import { BsMoonFill, BsSun } from 'react-icons/bs'
 import { BiSun } from 'react-icons/bi'
 import Mode from './Mode'
-
+import { Link, NavLink } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 const NavBar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const { activeOnglet } = useAppContext();
+    const location = useLocation() ; 
     useEffect(() => {
         const handleScrolle = () => {
             const y = window.scrollY;
@@ -60,8 +62,8 @@ const NavBar = () => {
 
     return (
         <>
-            <div className={`fixed left-0 top-0 z-40 right-0 shadow`}>
-                <div className={`__container w-full flex  py-3 items-center ${isMobile ? 'justify-end gap-5' : 'justify-evenly'} backdrop-blur-lg bg-backgroud-transparent font-heading`}>
+            <div className={`fixed left-0 top-0 z-40 right-0 backdrop-blur-lg bg-background/70 shadow`}>
+                <div className={`__container w-full flex  py-3 items-center ${isMobile ? 'justify-end gap-5' : 'justify-evenly'}  font-heading`}>
                     {isMobile && <Mode />}
                     {!isMobile ?
                         <NavDescTop />
@@ -71,7 +73,7 @@ const NavBar = () => {
                     {!isMobile && <Mode />}
                 </div>
             </div>
-            {activeOnglet !== 'accueil' &&
+            {(activeOnglet  !== 'accueil' && location.pathname === '/') &&
                 <div className='fixed z-20 bottom-20 right-4 xl:right-[calc((100%-1200px)/2+16px)]  w-[max-content]'>
                     <Button href='#accueil' iscolored icon={<FaArrowUp />} />
                 </div>
@@ -146,36 +148,46 @@ const NavMobile = ({ }) => {
 
 
 const NavBarLink = ({ className = '', onClick = () => { } }) => {
-    const { activeOnglet, setActiveOnglet } = useAppContext();
+    const { activeOnglet , setActiveOnglet } = useAppContext() ; 
 
+    const onglets = [
+        { id: 'accueil', label: 'Accueil' },
+        { id: 'services', label: 'Services' },
+        { id: 'projets', label: 'Mes projets' },
+        { id: 'competences', label: 'Compétences' },
+        { id: 'a-propos', label: 'À propos' },
+        { id: 'contact', label: 'Contact' },
+    ];
 
+    const handleClick = (id) => {
+        setActiveOnglet(id);
+        onClick();
+
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     return (
         <ul className={className}>
-            {[
-                { id: 'accueil', label: 'Accueil' },
-                { id: 'services', label: 'Services' },
-                { id: 'projets', label: 'Mes projets' },
-                { id: 'competences', label: 'Compétences' },
-                { id: 'a-propos', label: 'À propos' },
-                { id: 'contact', label: 'Contact' },
-            ].map(({ id, label }) => (
+            {onglets.map(({ id, label }) => (
                 <li key={id}>
-                    <a
-                        href={`#${id}`}
-                        onClick={() => { setActiveOnglet(id); onClick() }}
-                        className={`relative  link-underline py-1 px-2 ${activeOnglet === id
-                            ? 'text-theme link-underline-active'
-                            : 'hover:text-secondary'
+                    <Link
+                        to={`/#${id}`}
+                        onClick={() => handleClick(id)}
+                        className={`relative link-underline py-1 px-2 ${activeOnglet === id
+                                ? 'text-theme link-underline-active'
+                                : 'hover:text-secondary'
                             }`}
+                        aria-current={activeOnglet === id ? 'page' : undefined}
                     >
                         {label}
-                    </a>
+                    </Link>
                 </li>
             ))}
         </ul>
-
-    )
+    );
 }
 
 export default NavBar

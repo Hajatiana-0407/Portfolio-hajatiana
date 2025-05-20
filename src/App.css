@@ -103,6 +103,10 @@
       border-radius: 10px;
     }
 
+    *{
+      scrollbar-width: thin;
+    }
+
     .text-sm {
       font-size: var(--font-size-sm);
       font-family: ''
