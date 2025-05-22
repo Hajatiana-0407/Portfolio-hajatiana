@@ -23,7 +23,11 @@ const Project = () => {
                                         <NavLink to={`projets/${projet.id}`}>
                                             <Button type='button' label='Détails' icon={<FaEye />} />
                                         </NavLink>
-                                        <Button label='Répos' icon={<BsGithub />} />
+                                        {
+                                            projet.gitHubLink &&
+
+                                        <Button href={ projet.gitHubLink  } target='_blank' label='Dépôt' icon={<BsGithub />} />
+                                        }
                                     </div>
                                 </div>
                                 <div className='relative bg-secondary border-0 rounded-md overflow-hidden w-full h-45'>
@@ -46,7 +50,11 @@ const Project = () => {
                                             <NavLink to={`projets/${projet.id}`} className={'mr-1'}>
                                                 <Button type='button' label='' icon={<FaEye />} />
                                             </NavLink>
-                                            <Button label='' icon={<BsGithub />} />
+                                            {
+                                                projet.gitHubLink &&
+
+                                            <Button label='' href={ projet.gitHubLink } icon={<BsGithub />} />
+                                            }
                                         </div>
 
                                     </div>

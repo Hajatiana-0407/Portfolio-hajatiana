@@ -73,8 +73,8 @@ const ProjetDetails = () => {
                         <div>
                             <ul>
                                 {projet.technos.map((techno, key) => (
-                                    <li key={key} className='text-base text-primary font-body'>
-                                        - {techno.nom}
+                                    <li key={key} className='text-base text-primary font-body flex items-center gap-1'>
+                                        - { techno.icon } {techno.nom}
                                     </li>
                                 ))}
                             </ul>

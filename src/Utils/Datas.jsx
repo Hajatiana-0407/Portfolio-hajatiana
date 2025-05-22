@@ -30,6 +30,7 @@ export const Projets = [
             light: 'assets/images/projets/sa-logo-light.png'
         },
         link: 'https://softio-app.com/',
+        gitHubLink : "https://github.com/Hajatiana-0407/Softio" , 
         details: <>
             <p>
                 Ce logiciel de gestion complet a été conçu pour répondre aux besoins spécifiques de l'entreprise en matière de pilotage des activités commerciales, logistiques et administratives. Grâce à une interface organisée et intuitive, il facilite la navigation entre les différentes fonctionnalités et optimise la gestion quotidienne.
@@ -84,6 +85,7 @@ export const Projets = [
         },
 
         link: null,
+        gitHubLink : null , 
         details: <>
             <p>
                 Développé pour la société <strong>Haute-Zone Madagascar</strong>, ce logiciel de gestion regroupe un ensemble de fonctionnalités essentielles destinées à optimiser les opérations commerciales, techniques et administratives.
