@@ -5,12 +5,18 @@ import { useAppContext } from '../context/AppContext'
 import Button from '../Components/Button'
 import { MdOutlineDescription } from 'react-icons/md'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import { Navigate } from 'react-router-dom'
 
 const ProjetDetails = () => {
     const { isDark, setActiveOnglet } = useAppContext()
     const { id } = useParams();
     const projetId = id - 1;
-    const projet = Projets[projetId]
+    let projet;
+    if ((Projets.length ) < id) {
+        projet = null ; 
+        return <Navigate to={`/projets/${ Projets.length }`}/>
+    }
+    projet = Projets[projetId]
 
     useEffect(() => {
         setActiveOnglet('projets');
@@ -62,7 +68,7 @@ const ProjetDetails = () => {
                         <div className='text-primary'>
                             {
                                 projet.link &&
-                                <a href={ projet.link } target='_blank' className='text-theme underline'>Voire le projet →</a>
+                                <a href={projet.link} target='_blank' className='text-theme underline'>Voire le projet →</a>
                             }
                         </div>
                     </div>
@@ -74,7 +80,7 @@ const ProjetDetails = () => {
                             <ul>
                                 {projet.technos.map((techno, key) => (
                                     <li key={key} className='text-base text-primary font-body flex items-center gap-1'>
-                                        - { techno.icon } {techno.nom}
+                                        - {techno.icon} {techno.nom}
                                     </li>
                                 ))}
                             </ul>
