@@ -106,16 +106,30 @@ export const Projets = [
 
         </>
     },
-    // {
-    //     id: 3,
-    //     title: 'Gestion d\'école',
-    //     description: 'Plateforme complète de gestion scolaire, conçue pour automatiser les processus administratifs d’un établissement.',
-    //     technos: [
-    //         <><SiJquery />JQuery</>,
-    //         <><FaSymfony />Symfony</>,
-    //         <><DiMysql />MySql</>,
-    //     ],
-    //     image: "assets/images/projets/gestionEcole.png",
-    //     logo: ''
-    // },
+    {
+        id: 3,
+        title: 'Gestion d\'école',
+        description: 'Plateforme complète de gestion scolaire, conçue pour automatiser les processus administratifs d’un établissement.',
+        technos: [
+            {
+                icon: <FaBootstrap />,
+                nom: 'Bootstrap'
+            },
+            {
+                icon: <SiJquery />,
+                nom: 'JQuery'
+            },
+            {
+                icon: <FaSymfony />,
+                nom: 'Symfony'
+            },
+            {
+                icon: <DiMysql />,
+                nom: 'MySql'
+            },
+        ],
+        image: "assets/images/projets/gestionEcole.png",
+        logo: '' , 
+        gitHubLink : "https://github.com/Hajatiana-0407/Ecole"
+    },
 ]
